@@ -1,5 +1,5 @@
 import SigninSignup from "/components/SignUp/signin_signup";
-import ProfileAvatar from "../../components/ProfileAvatar";
+import ProfileAvatar from "/components/ProfileAvatar";
 
 import styles from "./landingHeader.module.css";
 

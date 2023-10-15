@@ -1,17 +1,17 @@
 {
   "/_not-found": "/_not-found",
   "/page": "/",
-  "/haskell/page": "/haskell",
   "/coho/page": "/coho",
   "/harleston/page": "/harleston",
   "/hillside/page": "/hillside",
+  "/haskell/page": "/haskell",
   "/lewis/page": "/lewis",
-  "/latin-way/page": "/latin-way",
-  "/profile/page": "/profile",
   "/sogo/page": "/sogo",
-  "/verify-email/page": "/verify-email",
-  "/map/page": "/map",
-  "/winthrop/page": "/winthrop",
+  "/latin-way/page": "/latin-way",
   "/west/page": "/west",
-  "/wren/page": "/wren"
+  "/map/page": "/map",
+  "/profile/page": "/profile",
+  "/verify-email/page": "/verify-email",
+  "/wren/page": "/wren",
+  "/winthrop/page": "/winthrop"
 }
