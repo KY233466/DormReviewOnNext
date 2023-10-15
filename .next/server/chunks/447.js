@@ -412,7 +412,7 @@ ${ee}`;return Object.assign(Error(et),$,{stack:ei})}ee.callErrorFromStatus=callE
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */(0,er.KN)(ei,en,"app")},34595:($,ee,et)=>{"use strict";et.d(ee,{Xb:()=>createUserWithEmailAndPassword,v0:()=>getAuth,Aj:()=>onAuthStateChanged,w$:()=>sendEmailVerification,e5:()=>signInWithEmailAndPassword,w7:()=>signOut});var er=et(51780),ei=et(55087),en=et(16158),es=et(77345),eo=et(17096),ep=et(9292);function _prodErrorMap(){return{"dependent-sdk-initialized-before-auth":"Another Firebase SDK was initialized and is trying to use Auth before Auth is initialized. Please be sure to call `initializeAuth` or `getAuth` before starting any other Firebase SDK."}}let eu=_prodErrorMap,eh=new er.LL("auth","Firebase",_prodErrorMap()),em=new ep.Yd("@firebase/auth");function _logWarn($,...ee){em.logLevel<=ep.in.WARN&&em.warn(`Auth (${ei.Jn}): ${$}`,...ee)}function _logError($,...ee){em.logLevel<=ep.in.ERROR&&em.error(`Auth (${ei.Jn}): ${$}`,...ee)}/**
+ */(0,er.KN)(ei,en,"app")},34595:($,ee,et)=>{"use strict";et.d(ee,{v0:()=>getAuth,Aj:()=>onAuthStateChanged,e5:()=>signInWithEmailAndPassword,w7:()=>signOut});var er=et(51780),ei=et(55087),en=et(16158),es=et(77345),eo=et(17096),ep=et(9292);function _prodErrorMap(){return{"dependent-sdk-initialized-before-auth":"Another Firebase SDK was initialized and is trying to use Auth before Auth is initialized. Please be sure to call `initializeAuth` or `getAuth` before starting any other Firebase SDK."}}let eu=_prodErrorMap,eh=new er.LL("auth","Firebase",_prodErrorMap()),em=new ep.Yd("@firebase/auth");function _logWarn($,...ee){em.logLevel<=ep.in.WARN&&em.warn(`Auth (${ei.Jn}): ${$}`,...ee)}function _logError($,...ee){em.logLevel<=ep.in.ERROR&&em.error(`Auth (${ei.Jn}): ${$}`,...ee)}/**
  * @license
  * Copyright 2020 Google LLC
  *
@@ -832,7 +832,7 @@ ${ee}`;return Object.assign(Error(et),$,{stack:ei})}ee.callErrorFromStatus=callE
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */async function signInWithPassword($,ee){return _performSignInRequest($,"POST","/v1/accounts:signInWithPassword",_addTidIfNecessary($,ee))}async function sendOobCode($,ee){return _performApiRequest($,"POST","/v1/accounts:sendOobCode",_addTidIfNecessary($,ee))}async function sendEmailVerification$1($,ee){return sendOobCode($,ee)}/**
+ */async function signInWithPassword($,ee){return _performSignInRequest($,"POST","/v1/accounts:signInWithPassword",_addTidIfNecessary($,ee))}/**
  * @license
  * Copyright 2020 Google LLC
  *
@@ -1012,22 +1012,7 @@ ${ee}`;return Object.assign(Error(et),$,{stack:ei})}ee.callErrorFromStatus=callE
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */let TwitterAuthProvider=class TwitterAuthProvider extends BaseOAuthProvider{constructor(){super("twitter.com")}static credential($,ee){return OAuthCredential._fromParams({providerId:TwitterAuthProvider.PROVIDER_ID,signInMethod:TwitterAuthProvider.TWITTER_SIGN_IN_METHOD,oauthToken:$,oauthTokenSecret:ee})}static credentialFromResult($){return TwitterAuthProvider.credentialFromTaggedObject($)}static credentialFromError($){return TwitterAuthProvider.credentialFromTaggedObject($.customData||{})}static credentialFromTaggedObject({_tokenResponse:$}){if(!$)return null;let{oauthAccessToken:ee,oauthTokenSecret:et}=$;if(!ee||!et)return null;try{return TwitterAuthProvider.credential(ee,et)}catch($){return null}}};/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */async function signUp($,ee){return _performSignInRequest($,"POST","/v1/accounts:signUp",_addTidIfNecessary($,ee))}TwitterAuthProvider.TWITTER_SIGN_IN_METHOD="twitter.com",TwitterAuthProvider.PROVIDER_ID="twitter.com";/**
+ */let TwitterAuthProvider=class TwitterAuthProvider extends BaseOAuthProvider{constructor(){super("twitter.com")}static credential($,ee){return OAuthCredential._fromParams({providerId:TwitterAuthProvider.PROVIDER_ID,signInMethod:TwitterAuthProvider.TWITTER_SIGN_IN_METHOD,oauthToken:$,oauthTokenSecret:ee})}static credentialFromResult($){return TwitterAuthProvider.credentialFromTaggedObject($)}static credentialFromError($){return TwitterAuthProvider.credentialFromTaggedObject($.customData||{})}static credentialFromTaggedObject({_tokenResponse:$}){if(!$)return null;let{oauthAccessToken:ee,oauthTokenSecret:et}=$;if(!ee||!et)return null;try{return TwitterAuthProvider.credential(ee,et)}catch($){return null}}};TwitterAuthProvider.TWITTER_SIGN_IN_METHOD="twitter.com",TwitterAuthProvider.PROVIDER_ID="twitter.com";/**
  * @license
  * Copyright 2020 Google LLC
  *
@@ -1087,22 +1072,7 @@ ${ee}`;return Object.assign(Error(et),$,{stack:ei})}ee.callErrorFromStatus=callE
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */let MultiFactorInfoImpl=class MultiFactorInfoImpl{constructor($,ee){this.factorId=$,this.uid=ee.mfaEnrollmentId,this.enrollmentTime=new Date(ee.enrolledAt).toUTCString(),this.displayName=ee.displayName}static _fromServerResponse($,ee){return"phoneInfo"in ee?PhoneMultiFactorInfoImpl._fromServerResponse($,ee):"totpInfo"in ee?TotpMultiFactorInfoImpl._fromServerResponse($,ee):_fail($,"internal-error")}};let PhoneMultiFactorInfoImpl=class PhoneMultiFactorInfoImpl extends null{constructor($){super("phone",$),this.phoneNumber=$.phoneInfo}static _fromServerResponse($,ee){return new PhoneMultiFactorInfoImpl(ee)}};let TotpMultiFactorInfoImpl=class TotpMultiFactorInfoImpl extends null{constructor($){super("totp",$)}static _fromServerResponse($,ee){return new TotpMultiFactorInfoImpl(ee)}};/**
- * @license
- * Copyright 2020 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */function _setActionCodeSettingsOnRequest($,ee,et){var er;_assert((null===(er=et.url)||void 0===er?void 0:er.length)>0,$,"invalid-continue-uri"),_assert(void 0===et.dynamicLinkDomain||et.dynamicLinkDomain.length>0,$,"invalid-dynamic-link-domain"),ee.continueUrl=et.url,ee.dynamicLinkDomain=et.dynamicLinkDomain,ee.canHandleCodeInApp=et.handleCodeInApp,et.iOS&&(_assert(et.iOS.bundleId.length>0,$,"missing-ios-bundle-id"),ee.iOSBundleId=et.iOS.bundleId),et.android&&(_assert(et.android.packageName.length>0,$,"missing-android-pkg-name"),ee.androidInstallApp=et.android.installApp,ee.androidMinimumVersionCode=et.android.minimumVersion,ee.androidPackageName=et.android.packageName)}async function createUserWithEmailAndPassword($,ee,et){var er;let ei;let en=_castAuth($),es={returnSecureToken:!0,email:ee,password:et,clientType:"CLIENT_TYPE_WEB"};if(null===(er=en._getRecaptchaConfig())||void 0===er?void 0:er.emailPasswordEnabled){let $=await injectRecaptchaFields(en,es,"signUpPassword");ei=signUp(en,$)}else ei=signUp(en,es).catch(async $=>{if("auth/missing-recaptcha-token"!==$.code)return Promise.reject($);{console.log("Sign-up is protected by reCAPTCHA for this project. Automatically triggering the reCAPTCHA flow and restarting the sign-up flow.");let $=await injectRecaptchaFields(en,es,"signUpPassword");return signUp(en,$)}});let eo=await ei.catch($=>Promise.reject($)),ep=await UserCredentialImpl._fromIdTokenResponse(en,"signIn",eo);return await en._updateCurrentUser(ep.user),ep}function signInWithEmailAndPassword($,ee,et){return signInWithCredential((0,er.m9)($),EmailAuthProvider.credential(ee,et))}async function sendEmailVerification($,ee){let et=(0,er.m9)($),ei=await $.getIdToken(),en={requestType:"VERIFY_EMAIL",idToken:ei};ee&&_setActionCodeSettingsOnRequest(et.auth,en,ee);let{email:es}=await sendEmailVerification$1(et.auth,en);es!==$.email&&await $.reload()}function onAuthStateChanged($,ee,et,ei){return(0,er.m9)($).onAuthStateChanged(ee,et,ei)}function signOut($){return(0,er.m9)($).signOut()}let MultiFactorSessionImpl=class MultiFactorSessionImpl{constructor($,ee,et){this.type=$,this.credential=ee,this.auth=et}static _fromIdtoken($,ee){return new MultiFactorSessionImpl("enroll",$,ee)}static _fromMfaPendingCredential($){return new MultiFactorSessionImpl("signin",$)}toJSON(){let $="enroll"===this.type?"idToken":"pendingCredential";return{multiFactorSession:{[$]:this.credential}}}static fromJSON($){var ee,et;if(null==$?void 0:$.multiFactorSession){if(null===(ee=$.multiFactorSession)||void 0===ee?void 0:ee.pendingCredential)return MultiFactorSessionImpl._fromMfaPendingCredential($.multiFactorSession.pendingCredential);if(null===(et=$.multiFactorSession)||void 0===et?void 0:et.idToken)return MultiFactorSessionImpl._fromIdtoken($.multiFactorSession.idToken)}return null}};/**
+ */let MultiFactorInfoImpl=class MultiFactorInfoImpl{constructor($,ee){this.factorId=$,this.uid=ee.mfaEnrollmentId,this.enrollmentTime=new Date(ee.enrolledAt).toUTCString(),this.displayName=ee.displayName}static _fromServerResponse($,ee){return"phoneInfo"in ee?PhoneMultiFactorInfoImpl._fromServerResponse($,ee):"totpInfo"in ee?TotpMultiFactorInfoImpl._fromServerResponse($,ee):_fail($,"internal-error")}};let PhoneMultiFactorInfoImpl=class PhoneMultiFactorInfoImpl extends null{constructor($){super("phone",$),this.phoneNumber=$.phoneInfo}static _fromServerResponse($,ee){return new PhoneMultiFactorInfoImpl(ee)}};let TotpMultiFactorInfoImpl=class TotpMultiFactorInfoImpl extends null{constructor($){super("totp",$)}static _fromServerResponse($,ee){return new TotpMultiFactorInfoImpl(ee)}};function signInWithEmailAndPassword($,ee,et){return signInWithCredential((0,er.m9)($),EmailAuthProvider.credential(ee,et))}function onAuthStateChanged($,ee,et,ei){return(0,er.m9)($).onAuthStateChanged(ee,et,ei)}function signOut($){return(0,er.m9)($).signOut()}let MultiFactorSessionImpl=class MultiFactorSessionImpl{constructor($,ee,et){this.type=$,this.credential=ee,this.auth=et}static _fromIdtoken($,ee){return new MultiFactorSessionImpl("enroll",$,ee)}static _fromMfaPendingCredential($){return new MultiFactorSessionImpl("signin",$)}toJSON(){let $="enroll"===this.type?"idToken":"pendingCredential";return{multiFactorSession:{[$]:this.credential}}}static fromJSON($){var ee,et;if(null==$?void 0:$.multiFactorSession){if(null===(ee=$.multiFactorSession)||void 0===ee?void 0:ee.pendingCredential)return MultiFactorSessionImpl._fromMfaPendingCredential($.multiFactorSession.pendingCredential);if(null===(et=$.multiFactorSession)||void 0===et?void 0:et.idToken)return MultiFactorSessionImpl._fromIdtoken($.multiFactorSession.idToken)}return null}};/**
  * @license
  * Copyright 2020 Google LLC
  *

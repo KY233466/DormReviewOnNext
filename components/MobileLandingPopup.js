@@ -8,8 +8,8 @@ import Dialog from "@mui/material/Dialog";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 
-import Signin from "./SignUp/signin";
-import Signup from "./SignUp/signup";
+// import Signin from "./SignUp/signin";
+// import Signup from "./SignUp/signup";
 
 const mobileStyle = {
   position: "absolute",
@@ -72,8 +72,8 @@ export default function SimpleDialog(props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={mobileStyle}>
-          {isSigninOpen && <Signin />}
-          {isSignupOpen && <Signup />}
+          {/* {isSigninOpen && <Signin />}
+          {isSignupOpen && <Signup />} */}
         </Box>
       </Modal>
     </Dialog>
