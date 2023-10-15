@@ -7,7 +7,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 
-import SimpleDialog from "./MobileLandingPopup";
+import SimpleDialog from "/components/MobileLandingPopup";
 import ProfileAvatar from "/components/ProfileAvatar";
 import { useUserAuth } from "/context/userAuthContext";
 
