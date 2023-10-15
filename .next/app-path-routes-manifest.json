@@ -3,15 +3,15 @@
   "/page": "/",
   "/coho/page": "/coho",
   "/harleston/page": "/harleston",
-  "/hillside/page": "/hillside",
   "/haskell/page": "/haskell",
-  "/lewis/page": "/lewis",
-  "/sogo/page": "/sogo",
+  "/wren/page": "/wren",
   "/latin-way/page": "/latin-way",
+  "/lewis/page": "/lewis",
+  "/verify-email/page": "/verify-email",
   "/west/page": "/west",
   "/map/page": "/map",
+  "/winthrop/page": "/winthrop",
   "/profile/page": "/profile",
-  "/verify-email/page": "/verify-email",
-  "/wren/page": "/wren",
-  "/winthrop/page": "/winthrop"
+  "/sogo/page": "/sogo",
+  "/hillside/page": "/hillside"
 }

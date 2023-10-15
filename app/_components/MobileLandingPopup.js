@@ -8,8 +8,8 @@ import Dialog from "@mui/material/Dialog";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 
-import Signin from "../../components/SignUp/signin";
-import Signup from "../../components/SignUp/signup";
+import Signin from "/components/SignUp/signin";
+import Signup from "/components/SignUp/signup";
 
 const mobileStyle = {
   position: "absolute",
