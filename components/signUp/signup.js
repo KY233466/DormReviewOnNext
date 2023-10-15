@@ -3,14 +3,17 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Form } from "react-bootstrap";
-import Alert from "@mui/material/Alert";
 import { Button } from "react-bootstrap";
-import styles from "./signup.module.css";
+
 import { getAuth } from "firebase/auth";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
+
+import Alert from "@mui/material/Alert";
+
+import styles from "./signup.module.css";
 
 const Signup = () => {
   const [email, setEmail] = useState("");

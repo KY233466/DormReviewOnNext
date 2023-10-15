@@ -1,4 +1,4 @@
-import SigninSignup from "/components/SignUp";
+import SigninSignup from "/components/SignInSignup";
 import ProfileAvatar from "/components/ProfileAvatar";
 
 import styles from "./landingHeader.module.css";
