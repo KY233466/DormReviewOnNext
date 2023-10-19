@@ -12,7 +12,7 @@
 /build
 
 # next.js
-/.next/
+.next/
 
 # screenshot
 .eslintcache
