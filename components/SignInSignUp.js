@@ -1,8 +1,8 @@
 "use client";
 import { useUserAuth } from "/context/userAuthContext";
-import LoginModal from "./SignUp/signin_modal";
-import SignupModal from "./SignUp/signup_modal";
-import styles from "./SignUp/signup.module.css";
+import LoginModal from "./signUp/signin_modal";
+import SignupModal from "./signUp/signup_modal";
+import styles from "./signUp/signup.module.css";
 
 const Signin_signup = () => {
   const { user } = useUserAuth();
