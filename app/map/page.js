@@ -42,6 +42,7 @@ const MobileMap = () => {
     return {
       "CoHo (Community Housing)": {
         location: "Uphill",
+        path1: "coho",
         path3: "CoHo-rate",
         available: "Junior ✅ Senior ✅",
         bed_laundry: "Full-size bed · 3 washers · 3 dryers",
@@ -50,6 +51,7 @@ const MobileMap = () => {
       },
       "Harleston Hall": {
         location: "Downhill",
+        path1: "harleston",
         path3: "Harleston-rate",
         available: "Sophomore ✅",
         bed_laundry: "Extra-long twin bed · 13 washers · 14 dryers",
@@ -57,6 +59,7 @@ const MobileMap = () => {
       },
       "Haskell Hall": {
         location: "Downhill",
+        path1: "haskell",
         path3: "Haskell-rate",
         available: "Sophomore ✅",
         bed_laundry: "Extra-long twin bed · 6 washers · 6 dryers",
@@ -64,6 +67,7 @@ const MobileMap = () => {
       },
       "Hillside Apartments": {
         location: "Uphill",
+        path1: "hillside",
         path3: "Hillside-rate",
         available: "Sophomore ✅ Junior ✅ Senior ✅",
         bed_laundry: "Extra-long twin bed · 6 washers · 6 dryers",
@@ -72,6 +76,7 @@ const MobileMap = () => {
       },
       "Latin Way": {
         location: "Downhill",
+        path1: "latin-way",
         path3: "Latin-way-rate",
         available: "Sophomore ✅ Junior ✅ Senior ✅",
         bed_laundry: "Extra-long twin bed · 9 washers · 9 dryers",
@@ -80,6 +85,7 @@ const MobileMap = () => {
       },
       "Lewis Hall": {
         location: "Downhill",
+        path1: "lewis",
         path3: "Lewis-rate",
         available: "Sophomore ✅",
         bed_laundry: "Extra-long twin bed · 6 washers · 6 dryers",
@@ -87,6 +93,7 @@ const MobileMap = () => {
       },
       "Sophia Gordon Hall": {
         location: "Downhill",
+        path1: "sogo",
         path3: "Sogo-rate",
         available: "Junior ✅ Senior ✅",
         bed_laundry: "Extra-long twin bed · 4 washers · 4 dryers",
@@ -95,12 +102,16 @@ const MobileMap = () => {
       },
       "Stratton Hall": {
         location: "Downhill",
+        path1: "stratton",
+        path3: "stratton-rate",
         available: "Sophomore ✅",
         bed_laundry: "Extra-long twin bed · 4 washers · 4 dryers",
         rooms: "41 doubles · 13 triples · 2 singles",
       },
       "West Hall": {
         location: "Uphill",
+        path1: "west",
+        path3: "west-rate",
         available: "Sophomore ✅",
         bed_laundry: "Extra-long twin bed · 4 washers · 4 dryers",
         rooms:
@@ -108,6 +119,7 @@ const MobileMap = () => {
       },
       "Wren Hall": {
         location: "Uphill",
+        path1: "wren",
         path3: "Wren-rate",
         available: "Sophomore ✅",
         bed_laundry: "Extra-long twin bed",
@@ -115,6 +127,7 @@ const MobileMap = () => {
       },
       "10 Winthrop Street": {
         location: "Uphill",
+        path1: "winthrop",
         path3: "Winthrop-rate",
         available: "Junior ✅ Senior ✅",
         bed_laundry: "Extra-long twin bed · 1 washer · 1 dryer",
@@ -122,6 +135,7 @@ const MobileMap = () => {
       },
       "9-11 Sunset Road": {
         location: "Uphill",
+        path1: "sunset",
         path3: "Sunset-rate",
         available: "Junior ✅ Senior ✅",
         bed_laundry: "Extra-long twin bed · 1 washer · 1 dryer",
@@ -178,11 +192,14 @@ const MobileMap = () => {
         <div className={styles.bottomSheet}>
           <div style={{ padding: "10px 16px" }}>
             <div className={styles.draggableHeader}>
-              <h3>
+              <h2>
                 {selectedDormName} · {dormBasicInfo[selectedDormName].location}
-              </h3>
-              <a href="/harleston" className={styles.btn}>
-                <KeyboardArrowRightIcon sx={{ color: "black" }} />
+              </h2>
+              <a
+                href={`/${dormBasicInfo[selectedDormName].path1}`}
+                className={styles.btn}
+              >
+                <KeyboardArrowRightIcon />
               </a>
             </div>
 
