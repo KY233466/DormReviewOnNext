@@ -39,7 +39,7 @@
     "prepare": "husky install",
     "lintCheck": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./app ./components",
     "lintPrettier": "prettier -c --write \"app/**/*.{js,ts,tsx}\" --end-of-line lf",
-    "lintFix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lintFix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ",
     "prettierCheck": "prettier -c \"app/**/*.{js,ts,tsx}\" --end-of-line lf",
     "prettier": "prettier -c --write \"app/**/*\""
   },
