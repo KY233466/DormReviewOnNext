@@ -16,7 +16,6 @@
 }
 
 .leftContainer {
-    padding-top: calc(3rem + 40px);
     width: 780px;
     height: 100vh;
     display: flex;
