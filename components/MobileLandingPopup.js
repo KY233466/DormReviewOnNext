@@ -8,7 +8,7 @@ import Dialog from "@mui/material/Dialog";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 
-import Signin from "./signUp/signin";
+import Login from "./signUp/Login";
 import Signup from "./signUp/signup";
 
 const mobileStyle = {
@@ -34,14 +34,14 @@ export default function SimpleDialog(props) {
     onClose(selectedValue);
   };
 
-  const handleOpenSignin = () => setIsSigninOpen(true);
+  const handleOpenLogIn = () => setIsSigninOpen(true);
 
   const handleCloseModal = () => {
     setIsSigninOpen(false);
     setIsSignupOpen(false);
   };
 
-  const handleOpenSignup = () => setIsSignupOpen(true);
+  const handleOpenSignUp = () => setIsSignupOpen(true);
 
   return (
     <Dialog onClose={handleClose} open={open}>
@@ -56,12 +56,12 @@ export default function SimpleDialog(props) {
       </DialogTitle>
       <List sx={{ pt: 0 }}>
         <ListItem>
-          <ListItemButton onClick={handleOpenSignin}>Login</ListItemButton>
+          <ListItemButton onClick={handleOpenLogIn}>Login</ListItemButton>
         </ListItem>
       </List>
       <List sx={{ pt: 0, marginBottom: "20px" }}>
         <ListItem>
-          <ListItemButton onClick={handleOpenSignup}>Sign up</ListItemButton>
+          <ListItemButton onClick={handleOpenSignUp}>Sign up</ListItemButton>
         </ListItem>
       </List>
 
@@ -72,7 +72,7 @@ export default function SimpleDialog(props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={mobileStyle}>
-          {isSigninOpen && <Signin />}
+          {isSigninOpen && <Login />}
           {isSignupOpen && <Signup />}
         </Box>
       </Modal>

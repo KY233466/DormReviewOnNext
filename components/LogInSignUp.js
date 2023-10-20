@@ -1,11 +1,11 @@
 "use client";
 import { useUserAuth } from "/context/userAuthContext";
-import LoginModal from "./signUp/signin_modal";
-import SignupModal from "./signUp/signup_modal";
+import LoginModal from "./signUp/LogInModal";
+import SignupModal from "./signUp/SignUpModal";
 
 import styles from "./signUp/signup.module.css";
 
-const SignInSignUp = () => {
+const LogInSignUp = () => {
   const { user } = useUserAuth();
 
   return (
@@ -20,4 +20,4 @@ const SignInSignUp = () => {
   );
 };
 
-export default SignInSignUp;
+export default LogInSignUp;

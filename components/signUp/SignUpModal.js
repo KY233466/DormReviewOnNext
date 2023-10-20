@@ -35,7 +35,7 @@ const mobileStyle = {
   alignItems: "center",
 };
 
-const SigninSignup = () => {
+const SignUpModal = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -64,4 +64,4 @@ const SigninSignup = () => {
   );
 };
 
-export default SigninSignup;
+export default SignUpModal;

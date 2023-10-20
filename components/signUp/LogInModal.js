@@ -4,7 +4,7 @@ import styles from "./signup.module.css";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Signin from "./signin";
+import Login from "./Login";
 
 const style = {
   position: "absolute",
@@ -35,7 +35,7 @@ const mobileStyle = {
   alignItems: "center",
 };
 
-const SigninSignup = () => {
+const LoginModal = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -57,11 +57,11 @@ const SigninSignup = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={matches ? mobileStyle : style}>
-          <Signin />
+          <Login />
         </Box>
       </Modal>
     </div>
   );
 };
 
-export default SigninSignup;
+export default LoginModal;
