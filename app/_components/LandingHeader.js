@@ -1,4 +1,4 @@
-import SigninSignup from "/components/SignInSignup";
+import SignInSignUp from "/components/SignInSignup";
 import ProfileAvatar from "/components/ProfileAvatar";
 
 import styles from "./landingHeader.module.css";
@@ -8,7 +8,7 @@ function LandingHeader() {
     <div className={styles.header}>
       <div className={styles.bold}> DormReview </div>
       <div className={styles.headerR}>
-        <SigninSignup />
+        <SignInSignUp />
         <ProfileAvatar />
       </div>
     </div>

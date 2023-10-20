@@ -2,9 +2,10 @@
 import { useUserAuth } from "/context/userAuthContext";
 import LoginModal from "./signUp/signin_modal";
 import SignupModal from "./signUp/signup_modal";
+
 import styles from "./signUp/signup.module.css";
 
-const Signin_signup = () => {
+const SignInSignUp = () => {
   const { user } = useUserAuth();
 
   return (
@@ -19,4 +20,4 @@ const Signin_signup = () => {
   );
 };
 
-export default Signin_signup;
+export default SignInSignUp;
