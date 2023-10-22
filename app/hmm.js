@@ -16,7 +16,6 @@ export default function Lol({ children }) {
       curr !== "/profile" &&
       curr !== "/verify-email"
     ) {
-      console.log("?");
       setDisablePullToRefresh(true);
     }
   }, []);

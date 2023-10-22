@@ -11,7 +11,7 @@ import Review from "../Review";
 
 import styles from "./details.module.css";
 
-function Details({
+async function Details({
   title,
   path,
   path2,
@@ -28,24 +28,10 @@ function Details({
   changeDetail,
 }) {
   const dormName = title;
-
-  const [loading, setLoading] = useState(true);
   const [displayLeft, setDisplayLeft] = useState(true);
-  const [reviews, setReviews] = useState(null);
 
-  useEffect(() => {
-    const getReviews = async () => {
-      try {
-        const data = await getDocs(collection(db, path3));
-        setReviews(data.docs.map((doc) => ({ ...doc.data() })));
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching documents:", error);
-      }
-    };
-
-    getReviews();
-  }, [path3]);
+  const res = await getDocs(collection(db, path3));
+  const data = res.docs.map((doc) => ({ ...doc.data() }));
 
   function changeLeft() {
     changeDetail();
@@ -60,28 +46,24 @@ function Details({
           <img alt="dorm" src={pic} className={styles.dormPic} />
           <div className={styles.info}>
             <div className={styles.sum}>
-              {loading ? (
-                <Skeleton width={"100%"} height={"35px"} />
-              ) : (
-                <div className={styles.data}>
-                  {reviews?.map((element) => {
-                    return (
-                      <div key={element.nReviews} className={styles.reviewData}>
-                        {element.Rate.toFixed(1)}
-                        <Rating
-                          key="{element}"
-                          index={element.index}
-                          name="read-only"
-                          value={element.Rate}
-                          precision={0.5}
-                          readOnly
-                        />
-                        {element.nReviews} reviews
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
+              <div className={styles.data}>
+                {data?.map((element) => {
+                  return (
+                    <div key={element.nReviews} className={styles.reviewData}>
+                      {element.Rate.toFixed(1)}
+                      <Rating
+                        key="{element}"
+                        index={element.index}
+                        name="read-only"
+                        value={element.Rate}
+                        precision={0.5}
+                        readOnly
+                      />
+                      {element.nReviews} reviews
+                    </div>
+                  );
+                })}
+              </div>
               <div> {available} </div>
               <div> {bed_laundry} </div>
               <div style={{ fontSize: "14px" }}> {rooms} </div>
