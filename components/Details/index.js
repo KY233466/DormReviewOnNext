@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import Rating from "@mui/material/Rating";
-import Skeleton from "@mui/material/Skeleton";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 

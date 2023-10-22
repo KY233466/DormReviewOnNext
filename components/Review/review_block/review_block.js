@@ -1,5 +1,6 @@
 import Rating from "@mui/material/Rating";
 import useMediaQuery from "@mui/material/useMediaQuery";
+
 import styles from "./review_block.module.css";
 
 export default function ReviewBlock({ divider, year, rate, message }) {
