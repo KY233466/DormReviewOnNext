@@ -1,7 +1,7 @@
 "use client";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
-// import DormDisplay from "../_components/DormDisplay";
+import DormDisplay from "../_components/DormDisplay";
 
 const GFloor = "/floor/Harleston/HarlestionG.png";
 const OneFloor = "/floor/Harleston/1Harleston.png";
@@ -83,7 +83,14 @@ const Harleston = () => {
   // const isMobile = useMediaQuery("(max-width:860px)");
   const isMobile = useMediaQuery("(max-width:860px)");
 
-  return !isMobile ? <div>not mobile</div> : <div>mobile</div>;
+  return !isMobile ? (
+    <>
+      <div>not mobile</div>
+      <DormDisplay Content={Content} floor={floor} Pro={Pro} Con={Con} />
+    </>
+  ) : (
+    <div>mobile</div>
+  );
 };
 
 export default Harleston;
