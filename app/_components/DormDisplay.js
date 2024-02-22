@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import { useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
@@ -10,7 +10,7 @@ import styles from "./DormDisplay.module.css";
 
 // function DormDisplay({ Content, floor, Pro, Con }) {
 const DormDisplay = ({ Content, floor, Pro, Con }) => {
-  const [displayDetail, setDisplayDetail] = useState(true);
+  // const [displayDetail, setDisplayDetail] = useState(true);
 
   // function changeDetail() {
   //   setDisplayDetail(!displayDetail);
@@ -18,6 +18,7 @@ const DormDisplay = ({ Content, floor, Pro, Con }) => {
 
   return (
     <div className={styles.container}>
+      <div>???</div>
       <Details
         title={Content.title}
         path={Content.path}
@@ -35,7 +36,7 @@ const DormDisplay = ({ Content, floor, Pro, Con }) => {
         changeDetail={() => console.log("?")}
         // ratingData={ratingData}
       />
-      {displayDetail ? <div className={styles.placeholder}> </div> : null}
+      {/* {displayDetail ? <div className={styles.placeholder}> </div> : null} */}
       {/* <FloorPlan displayDetail={displayDetail} floor={floor} /> */}
     </div>
   );

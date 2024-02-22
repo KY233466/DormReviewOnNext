@@ -43,13 +43,13 @@ function Details({
   return (
     <div className={styles.container}>
       <LeftContainer
-        available={available}
-        bed_laundry={bed_laundry}
-        rooms={rooms}
-        moreInfo={moreInfo}
-        description={description}
+        // available={available}
+        // bed_laundry={bed_laundry}
+        // rooms={rooms}
+        // moreInfo={moreInfo}
+        // description={description}
         path3={path3}
-        pic={pic}
+        // pic={pic}
       />
       {/* {displayLeft && ( */}
 

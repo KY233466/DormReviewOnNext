@@ -2,7 +2,6 @@
 
 import Skeleton from "@mui/material/Skeleton";
 import Rating from "@mui/material/Rating";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 import styles from "./RatingDisplay.module.css";
 
@@ -38,7 +37,7 @@ const RatingDisplay = ({data}) => {
       {/* // ) : (
       //   <Skeleton width={"150px"} height={"35px"} />
       // )} */}
-      <script
+      {/* <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -49,7 +48,7 @@ const RatingDisplay = ({data}) => {
             // Add more properties as needed
           }),
         }}
-      />
+      /> */}
     </div>
   );
 };
