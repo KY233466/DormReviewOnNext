@@ -12,7 +12,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <UserAuthContextProvider>{children}</UserAuthContextProvider>
+        {/* <UserAuthContextProvider> */}
+        {children}
+        {/* </UserAuthContextProvider> */}
       </body>
     </html>
   );

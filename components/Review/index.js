@@ -1,3 +1,4 @@
+"use client"
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState } from "react";
 import HomeIcon from "@mui/icons-material/Home";

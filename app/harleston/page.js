@@ -1,9 +1,7 @@
 "use client";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
-
 import DormDisplay from "../_components/DormDisplay";
-import DormDisplayMobile from "../_components/DormDisplayMobile";
 
 const GFloor = "/floor/Harleston/HarlestionG.png";
 const OneFloor = "/floor/Harleston/1Harleston.png";
@@ -68,14 +66,28 @@ const Con = [
   },
 ];
 
-function Harleston() {
+// async function getData(path3) {
+//   try {
+//     const data = await getDocs(collection(db, path3));
+//     return data.docs.map((doc) => ({ ...doc.data() }));
+//   } catch (error) {
+//     console.error("Error fetching documents:", error);
+//   }
+// }
+
+// const RatingDisplay = async ({ path3 }) => {
+// const Harleston = async () => {
+const Harleston = () => {
+  // let ratingData = [];
+  // ratingData = await getData(Content.path3);
+  // const isMobile = useMediaQuery("(max-width:860px)");
   const isMobile = useMediaQuery("(max-width:860px)");
 
   return !isMobile ? (
     <DormDisplay Content={Content} floor={floor} Pro={Pro} Con={Con} />
   ) : (
-    <DormDisplayMobile Content={Content} floor={floor} Pro={Pro} Con={Con} />
+    <div></div>
   );
-}
+};
 
 export default Harleston;
