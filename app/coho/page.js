@@ -1,12 +1,27 @@
+// import { useState } from "react";
 "use client";
+
+import { useState } from "react";
+
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
+import { useLoadScript } from "@react-google-maps/api";
+import MediaQuery from "react-responsive";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import { useState, useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "/firebase/firebase";
+// import Details from "components/details";
+import BuildingRatingList from "../../components/BuildingRatingList";
+// import ContentBlock from "components/details/content";
+import CoHoMap from "components/Map/cohoMap";
+import DormDisplayWrapper from "components/DormDisplayWrapper";
 
-import Details from "/components/Details";
+import pic from "../../public/coho.jpeg";
+import cohoMap from "public/rll-coho-map.png";
+import kitchen from "public/Kitchen.png";
+import Bed from "public/Bed.jpg";
+import Washer from "public/Washer.png";
+import { CoHoDorms } from "./CoHoConfig";
 
 import styles from "./sogo.module.css";
 
@@ -16,7 +31,8 @@ const Content = {
   path2: "CoHo-room",
   path3: "CoHo-rate",
   available: "Junior ✅ Senior ✅",
-  bed_laundry: "Full-size bed · 3 washers · 3 dryers",
+  bed_laundry:
+    "Full-size bed · laundry rooms located at Green House (12 Bellevue), 21 Bellevue, and 22 Bellevue",
   rooms:
     "2 ten-person units · 2 nine-person units · 2 eight-person units · 3 seven-person units · 1 six-person unit · 3 five-person units · 6 four-person units · 4 three-person units",
   moreInfo:
@@ -24,104 +40,54 @@ const Content = {
   description:
     "CoHo (Community Housing) is Tufts newest housing option for juniors and seniors. Located just behind Wren Hall (between Capen Street Ext and Boston Avenue), this group of woodframe houses is home to 137 students. These houses were all fully renovated during the between 2018 and 2019.",
   location: "Uphill",
-  pic: "/coho.jpeg",
+  pic: pic,
 };
 
 const Pro = [
   {
     title: "Full-size Bed",
-    pic: "/Bed.jpg",
+    pic: Bed,
   },
   {
     title: "Private Kitchen",
-    pic: "/Kitchen.png",
+    pic: kitchen,
   },
 ];
 
 const Con = [
   {
-    title: "Lack of Laundry Equipment",
-    pic: "/Washer.png",
+    title: "Laundry Equipment In Another Building",
+    pic: Washer,
   },
 ];
 
 function CoHo() {
-  const [displayDetail, setDisplayDetail] = useState(true);
-  const [googleMapsApiKey, setGoogleMapsApiKey] = useState("");
-  const [zoom] = useState(18.7);
+  const [toggleList, setToggleList] = useState([]);
 
-  const [center] = useState({
-    lat: 42.41024428222851,
-    lng: -71.12156863095187,
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
   });
 
-  const isMobile = useMediaQuery("(max-width:860px)");
-
-  // const { isLoaded } = useLoadScript({
-  //   googleMapsApiKey: googleMapsApiKey,
-  // });
-
-  // if (!isLoaded) return <div> Loading... </div>;
-
-  function changeDetail() {
-    setDisplayDetail(!displayDetail);
-  }
-
-  return !isMobile ? (
-    <div className={styles.container}>
-      <Details
-        title={Content.title}
-        path={Content.path}
-        path2={Content.path2}
-        path3={Content.path3}
-        available={Content.available}
-        bed_laundry={Content.bed_laundry}
-        rooms={Content.rooms}
-        moreInfo={Content.moreInfo}
-        description={Content.description}
-        location={Content.location}
-        pic={Content.pic}
-        pro={Pro}
-        con={Con}
-        changeDetail={() => changeDetail()}
+  return (
+    <>
+      <DormDisplayWrapper
+        Content={Content}
+        Pro={Pro}
+        Con={Con}
+        fetchReviews={false}
+        altRatingDisplayBlock={
+          <BuildingRatingList
+            toggleList={toggleList}
+            setToggleList={setToggleList}
+          />
+        }
+        altRightContainer={
+          <div className={styles.rightContainer}>
+            <CoHoMap />
+          </div>
+        }
       />
-      {displayDetail ? <div className={styles.placeholder}> </div> : null}
-      <div className={styles.rightContainer}>
-        {/* <CoHoMap center={center} zoom={zoom} /> */}
-        Processed floor plan not available.Please go to{" "}
-        <a
-          style={{
-            textDecoration: "underline",
-          }}
-          href="https://dorm-review.com/harleston"
-        >
-          Harleston{" "}
-        </a>
-        to view what it would look like.
-      </div>
-    </div>
-  ) : (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      Processed floor plan not available.Please go to{" "}
-      <a
-        style={{
-          textDecoration: "underline",
-        }}
-        href="https://dorm-review.com/harleston"
-      >
-        Harleston{" "}
-      </a>
-      to view what it would look like.
-    </div>
-    // <DormDisplayMobile Content={Content} floor={floor} Pro={Pro} Con={Con} />
+    </>
   );
 }
 

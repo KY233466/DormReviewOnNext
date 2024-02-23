@@ -1,4 +1,8 @@
-import { useNavigate } from "react-router";
+"use client"
+
+import { useState } from 'react';
+// import { useNavigate } from "react-router";
+import { useLoadScript } from "@react-google-maps/api";
 import styles from "./map.module.css";
 
 import { GoogleMap, OverlayView } from "@react-google-maps/api";
@@ -129,13 +133,37 @@ const Dorms = [
   },
 ];
 
-export default function CoHoMap({ center, zoom }) {
-  const navigate = useNavigate();
+export default function CoHoMap() {
+  // const navigate = useNavigate();
+  const [zoom] = useState(18.7);
+  const [center] = useState({
+    lat: 42.41024428222851,
+    lng: -71.12156863095187,
+  });
 
   const getPixelPositionOffset = (width, height) => ({
     x: -(width / 2),
     y: -(height - 15),
   });
+
+    const { isLoaded } = useLoadScript({
+      googleMapsApiKey: "AIzaSyDvioL9bPkVCyily9QdB4aPnZ3hNhimCZM",
+    });
+
+    if (!isLoaded)
+      return (
+        <div
+          style={{
+            width: "100vw",
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          Loading Google Maps...
+        </div>
+      );
 
   return (
     <GoogleMap
@@ -151,7 +179,12 @@ export default function CoHoMap({ center, zoom }) {
           mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           getPixelPositionOffset={getPixelPositionOffset}
         >
-          <div onClick={() => navigate(value.path)} className={styles.bubble}>
+          <div
+            onClick={() => () => {
+              window.location.href = value.path;
+            }}
+            className={styles.bubble}
+          >
             {value.title}
           </div>
         </OverlayView>

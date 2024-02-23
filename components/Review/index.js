@@ -10,7 +10,14 @@ import Tabs from "./reviewTab/reviewTab";
 
 import styles from "./review.module.css";
 
-function Review({ path, path2, path3, isMobile }) {
+function Review({
+  path,
+  path2,
+  path3,
+  isMobile,
+  ratingDormData,
+  ratingRoomData,
+}) {
   const [open, setOpen] = useState(false);
   const [openR, setOpenR] = useState(false);
 
@@ -48,7 +55,12 @@ function Review({ path, path2, path3, isMobile }) {
       />
       <RoomReview name={path} path={path2} open={openR} setOpen={setOpenR} />
       <div className={styles.reviewSection}>
-        <Tabs path={path} path2={path2} />
+        <Tabs
+          path={path}
+          path2={path2}
+          ratingDormData={ratingDormData}
+          ratingRoomData={ratingRoomData}
+        />
       </div>
     </div>
   );

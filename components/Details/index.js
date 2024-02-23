@@ -1,28 +1,13 @@
-// import { useState } from "react";
-
-import Rating from "@mui/material/Rating";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase/firebase";
-
-// import Header from "./Header";
-import ProCon from "../ProCon";
+// "use client";
+import { useState } from "react";
 import LeftContainer from "./LeftContainer";
-// import Review from "../Review";
-import RatingDisplay from "../RatingDisplay/RatingDisplay";
+
+import Content from "./Content";
 
 import styles from "./details.module.css";
 
-
-// async function getData(path3) {
-//   try {
-//     const data = await getDocs(collection(db, path3));
-//     return data.docs.map((doc) => ({ ...doc.data() }));
-//   } catch (error) {
-//     console.error("Error fetching documents:", error);
-//   }
-// }
-
 function Details({
+  dormName,
   title,
   path,
   path2,
@@ -37,25 +22,65 @@ function Details({
   pro,
   con,
   changeDetail,
+  fetchReviews = true,
+  altRatingDisplayBlock,
+  ratingData,
+  ratingDormData,
+  ratingRoomData,
+  isMobile,
+  altReviewBlock,
 }) {
-  const dormName = title;
+  const [displayLeft, setDisplayLeft] = useState(true);
+
+  function changeLeft() {
+    changeDetail();
+    setDisplayLeft(!displayLeft);
+  }
 
   return (
     <div className={styles.container}>
-      <LeftContainer
-        // available={available}
-        // bed_laundry={bed_laundry}
-        // rooms={rooms}
-        // moreInfo={moreInfo}
-        // description={description}
-        path3={path3}
-        // pic={pic}
-      />
-      {/* {displayLeft && ( */}
-
-      {/* )} */}
-      {/* <div className={styles.btn} onClick={() => changeLeft()}> */}
-      {/* {displayLeft ? (
+      {displayLeft && (
+        <div className={styles.leftContainer}>
+          <Content
+            dormName={dormName}
+            title={title}
+            location={location}
+            pic={pic}
+            altRatingDisplayBlock={altRatingDisplayBlock}
+            available={available}
+            bed_laundry={bed_laundry}
+            path={path}
+            path2={path2}
+            path3={path3}
+            rooms={rooms}
+            pro={pro}
+            con={con}
+            moreInfo={moreInfo}
+            description={description}
+            fetchReviews={fetchReviews}
+            altReviewBlock={altReviewBlock}
+            ratingData={ratingData}
+            ratingDormData={ratingDormData}
+            ratingRoomData={ratingRoomData}
+            isMobile={isMobile}
+          />
+        </div>
+        // <LeftContainer
+        //   available={available}
+        //   bed_laundry={bed_laundry}
+        //   rooms={rooms}
+        //   moreInfo={moreInfo}
+        //   description={description}
+        //   path3={path3}
+        //   pic={pic}
+        //   pro={pro}
+        //   con={con}
+        //   ratingData={ratingData}
+        //   isMobile={isMobile}
+        // />
+      )}
+      <div className={styles.btn} onClick={() => changeLeft()}>
+        {displayLeft ? (
           <img
             alt=""
             src="//maps.gstatic.com/tactile/pane/arrow_left_2x.png"
@@ -67,8 +92,8 @@ function Details({
             src="//maps.gstatic.com/tactile/pane/arrow_left_2x.png"
             className={styles.imgR}
           ></img>
-        )} */}
-      {/* </div> */}
+        )}
+      </div>
     </div>
   );
 }

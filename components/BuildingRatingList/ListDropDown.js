@@ -1,0 +1,138 @@
+"use client"
+
+import { useState } from "react";
+
+import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
+import List from "@mui/material/List";
+import Link from "@mui/material/Link";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import Collapse from "@mui/material/Collapse";
+
+import { CoHoDorms } from "../../app/coho/CoHoConfig";
+// import RatingDisplay from "components/RatingDisplay/RatingDisplay";
+
+const linkStyle = {
+  color: "#303030",
+  textDecoration: "none !important",
+  marginBottom: "0 !important",
+  "&:hover, &:focus": {
+    textDecoration: "underline !important",
+  },
+};
+
+export default function DropDown({ ratingDatas }) {
+  const [toggleList, setToggleList] = useState([]);
+  const [displayRatings, setDisplayRatings] = useState(false);
+
+  const handleToggle = (name) => {
+    if (toggleList.find((o) => o === name)) {
+      let newList = toggleList.filter((o) => o !== name);
+      setToggleList(newList);
+      return;
+    }
+    setToggleList([...toggleList, name]);
+  };
+
+  const handleOnClickList = () => {
+    setDisplayRatings(!displayRatings);
+    setToggleList([]);
+  };
+
+  return (
+    <List>
+      <ListItemButton
+        alignItems="flex-start"
+        onClick={handleOnClickList}
+        sx={{
+          borderRadius: "5px",
+          backgroundColor: "#e96a34",
+          color: "white",
+          pl: "10px",
+          mb: "7px",
+          "&:hover": { backgroundColor: "#CA4D18" },
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <ListItemText primary="CoHo Buildings & Ratings" />
+        <KeyboardArrowDown
+          sx={{
+            transform: displayRatings ? "rotate(-180deg)" : "rotate(0)",
+            transition: "0.2s",
+          }}
+        />
+      </ListItemButton>
+
+      <div style={{ display: displayRatings ? "block" : "none" }}>
+        {CoHoDorms.map((d, index) => (
+          <div key={index}>
+            <ListItemButton
+              onClick={() => handleToggle(d.label)}
+              sx={{
+                backgroundColor: d.unit ? "#F5F5F5" : "transparent",
+                "&:hover, &:focus": {
+                  backgroundColor: d.unit ? "#DBDBDB" : "#F5F5F5",
+                },
+                borderRadius: "3px",
+                pr: "0px",
+                mb: "7px",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              <Link href={"/coho/" + d.path} underline="always" sx={linkStyle}>
+                {d.label}
+              </Link>
+              {d.unit ? (
+                <KeyboardArrowDown
+                  sx={{
+                    marginRight: "10px",
+                    transform: toggleList.includes(d.label)
+                      ? "rotate(-180deg)"
+                      : "rotate(0)",
+                    transition: "0.2s",
+                  }}
+                />
+              ) : (
+                <div>?</div>
+                // <RatingDisplay data={ratingDatas[d.label]} />
+              )}
+            </ListItemButton>
+
+            {d.unit && (
+              <Collapse
+                in={toggleList.includes(d.label)}
+                timeout="auto"
+                unmountOnExit
+              >
+                {d.unit.map((u) => (
+                  <List key={u.label + index} component="div" disablePadding>
+                    <ListItemButton
+                      sx={{
+                        pl: 4,
+                        mb: "5px",
+                        flexWrap: "wrap",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <Link
+                        href={"/coho/" + u.url}
+                        underline="always"
+                        sx={linkStyle}
+                      >
+                        {u.label}
+                      </Link>
+                      {/* <RatingDisplay data={ratingDatas[d.label][u.label]} /> */}
+                    </ListItemButton>
+                  </List>
+                ))}
+              </Collapse>
+            )}
+          </div>
+        ))}
+      </div>
+    </List>
+  );
+}

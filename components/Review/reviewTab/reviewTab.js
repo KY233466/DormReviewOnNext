@@ -7,11 +7,11 @@ import RoomReviewBlock from "../RoomReview_block/roomReview_block";
 import { db } from "../../../firebase/firebase";
 import styles from "./reviewTab.module.css";
 
-const ReviewTabs = ({ path, path2 }) => {
-  const [loading, setLoading] = useState(true);
+const ReviewTabs = ({ path, path2, ratingDormData, ratingRoomData }) => {
+  // const [loading, setLoading] = useState(true);
   const [showDormReview, setShowDormReview] = useState(true);
-  const [reviews, setReviews] = useState([]);
-  const [reviewsRoom, setReviewsRoom] = useState([]);
+  // const [reviews, setReviews] = useState([]);
+  // const [reviewsRoom, setReviewsRoom] = useState([]);
 
   const handleChange = (props) => {
     if (props === 0) {
@@ -21,42 +21,42 @@ const ReviewTabs = ({ path, path2 }) => {
     setShowDormReview(false);
   };
 
-  useEffect(() => {
-    const getReviews = async () => {
-      try {
-        const data = await getDocs(collection(db, path));
-        setReviews(data.docs.map((doc) => ({ ...doc.data() })));
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching documents:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const getReviews = async () => {
+  //     try {
+  //       const data = await getDocs(collection(db, path));
+  //       setReviews(data.docs.map((doc) => ({ ...doc.data() })));
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching documents:", error);
+  //     }
+  //   };
 
-    getReviews();
-  }, [path]);
+  //   getReviews();
+  // }, [path]);
 
-  useEffect(() => {
-    const getReviewsRoom = async () => {
-      try {
-        const data = await getDocs(collection(db, path2));
-        setReviewsRoom(data.docs.map((doc) => ({ ...doc.data() })));
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching documents:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const getReviewsRoom = async () => {
+  //     try {
+  //       const data = await getDocs(collection(db, path2));
+  //       setReviewsRoom(data.docs.map((doc) => ({ ...doc.data() })));
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching documents:", error);
+  //     }
+  //   };
 
-    getReviewsRoom();
-  }, [path2]);
+  //   getReviewsRoom();
+  // }, [path2]);
 
   const Content = () => {
     if (showDormReview) {
-      return reviews.length === 0 ? (
+      return ratingDormData.length === 0 ? (
         <div className={styles.nothing}>
           Be the first to leave a dorm review!
         </div>
       ) : (
-        reviews?.map((element, index) => {
+        ratingDormData?.map((element, index) => {
           return (
             <ReviewBlock
               key={element.message}
@@ -64,17 +64,17 @@ const ReviewTabs = ({ path, path2 }) => {
               year={element.year}
               rate={element.rate}
               message={element.message}
-              divider={index !== reviews.length - 1}
+              divider={index !== ratingDormData.length - 1}
             />
           );
         })
       );
     }
 
-    return reviewsRoom.length === 0 ? (
+    return ratingRoomData.length === 0 ? (
       <div className={styles.nothing}>Be the first to leave a room review!</div>
     ) : (
-      reviewsRoom?.map((element, index) => {
+      ratingRoomData?.map((element, index) => {
         return (
           <RoomReviewBlock
             key={element.message}
@@ -85,7 +85,7 @@ const ReviewTabs = ({ path, path2 }) => {
             lottery={element.lottery}
             schoolYear={element.schoolYear}
             message={element.message}
-            divider={index !== reviews.length - 1}
+            divider={index !== ratingRoomData.length - 1}
           />
         );
       })
@@ -108,7 +108,8 @@ const ReviewTabs = ({ path, path2 }) => {
           Room Review
         </div>
       </div>
-      {loading ? <Skeleton width={"100%"} height={"150px"} /> : Content()}
+      {/* {loading ? <Skeleton width={"100%"} height={"150px"} /> : Content()} */}
+      {Content()}
     </div>
   );
 };

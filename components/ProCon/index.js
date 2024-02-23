@@ -1,11 +1,11 @@
-import useMediaQuery from "@mui/material/useMediaQuery";
+// import useMediaQuery from "@mui/material/useMediaQuery";
 
 import Icon from "./icon";
 
 import styles from "./procon.module.css";
 
-const ProCon = ({ pro, con }) => {
-  const isMobile = useMediaQuery("(max-width:860px)");
+const ProCon = ({ pro, con, isMobile }) => {
+  // const isMobile = useMediaQuery("(max-width:860px)");
 
   return (
     <div className={isMobile ? styles.containerMobile : styles.container}>

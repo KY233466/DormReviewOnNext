@@ -3,7 +3,15 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import MobileDetailBottomSheet from "/components/MobileDetailBottomSheet";
 import FloorPlan from "/components/FloorPlan";
 
-function DormDisplayMobile({ Content, floor, Pro, Con }) {
+function DormDisplayMobile({
+  Content,
+  floor,
+  Pro,
+  Con,
+  ratingData,
+  ratingDormData,
+  ratingRoomData,
+}) {
   return (
     <>
       <a
@@ -22,7 +30,14 @@ function DormDisplayMobile({ Content, floor, Pro, Con }) {
         <ArrowBackIosIcon style={{ height: "15px", color: "#2f2f2f" }} />
       </a>
       <FloorPlan displayDetail={true} floor={floor} />
-      {/* <MobileDetailBottomSheet content={Content} pro={Pro} con={Con} /> */}
+      <MobileDetailBottomSheet
+        content={Content}
+        pro={Pro}
+        con={Con}
+        ratingData={ratingData}
+        ratingDormData={ratingDormData}
+        ratingRoomData={ratingRoomData}
+      />
     </>
   );
 }
